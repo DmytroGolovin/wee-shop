@@ -3,12 +3,15 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <a class="navbar-brand" [routerLink]="['/']">
-      <!-- <img src="assets/images/logo.png" width="30" height="30" class="d-inline-block align-top" alt="img"> -->
-      Wee Sweats
+      <img src="assets/images/wee-shop-logo.png" width="30" height="30" class="d-inline-block align-top" alt="img">
+      Wee Shop
   </a>
 
   <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse">
     <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+      <li class="nav-item">
+        <a class="nav-link cursor-pointer" [routerLink]="['/']">Products</a>
+      </li>
       <li class="nav-item">
         <a class="nav-link cursor-pointer" [routerLink]="['/']">About Us</a>
       </li>
