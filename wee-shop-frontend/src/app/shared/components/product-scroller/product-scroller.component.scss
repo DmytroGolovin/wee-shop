@@ -1,0 +1,63 @@
+.card {
+  width: 100%;
+}
+
+.scrolling-wrapper {
+  -webkit-overflow-scrolling: touch;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+
+  .card {
+    flex: 0 0 auto;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 3px;
+  height: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #555;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: black;
+}
+
+.btn-round {
+  border-radius: 50%;
+}
+
+.scroll-control-section {
+  display: table;
+  height: 100%;
+}
+
+.wrapper-div {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.scroller-controller {
+  background-color: lightgray;
+  color: white;
+}
+
+.scroller-controller:hover {
+  background-color: black;
+}
+
+.scroller-component:hover {
+  .scroller-controller {
+    background-color: gray;
+  }
+}
