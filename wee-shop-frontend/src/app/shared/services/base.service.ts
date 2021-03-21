@@ -7,11 +7,9 @@ import { Observable } from 'rxjs';
 })
 export class BaseService {
 
-  private apiUrl : string = "https://localhost:44344/";
-  private baseUrl: string;
+  private apiUrl : string = "http://localhost:3000/";
 
-  constructor(private _httpClient: HttpClient, @Inject('BASE_URL') baseUrl: string) {
-    this.baseUrl = baseUrl;
+  constructor(private _httpClient: HttpClient) {
    }
 
   public get<T>(path: string, params?: any, headers?: HttpHeaders, authenticated = true): Observable<T>{
