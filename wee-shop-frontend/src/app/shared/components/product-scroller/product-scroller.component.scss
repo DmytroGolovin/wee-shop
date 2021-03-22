@@ -25,12 +25,12 @@
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #555;
+  background: #5c6268;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: black;
+  background: #343a40;
 }
 
 .btn-round {
@@ -48,12 +48,12 @@
 }
 
 .scroller-controller {
-  background-color: lightgray;
+  background-color: #343a40;
   color: white;
 }
 
 .scroller-controller:hover {
-  background-color: black;
+  background-color: #5c6268;
 }
 
 .scroller-component:hover {
@@ -63,10 +63,10 @@
 }
 
 .details-link {
-  color: gray;
+  color: #343a40;
 }
 
 .details-link:hover {
   text-decoration: none;
-  color: black;
+  color: #5c6268;
 }

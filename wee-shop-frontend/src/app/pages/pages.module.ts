@@ -5,10 +5,11 @@ import { PagesRoutingModule } from './pages-routing.module';
 import { HomeComponent } from './home/home.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SharedModule } from '../shared/shared.module';
+import { ProductsComponent } from './products/products.component';
 
 
 @NgModule({
-  declarations: [HomeComponent],
+  declarations: [HomeComponent, ProductsComponent],
   imports: [
     CommonModule,
     PagesRoutingModule,

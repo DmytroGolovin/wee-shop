@@ -1,5 +1,5 @@
 import { Router } from "https://deno.land/x/oak/mod.ts";
-import { getProducts, getProduct, addProduct, updateProduct, deleteProduct } from "../controllers/products.controller.ts"
+import { getProducts, getProduct, addProduct, updateProduct, deleteProduct, getProductsWithFilter } from "../controllers/products.controller.ts"
 
 const productsRouter = new Router();
 
@@ -8,6 +8,10 @@ productsRouter
    * @description Get all products
    */
   .get("/api/products", getProducts)
+  /**
+   * @description Get products with filters
+   */
+  .get("/api/products/getByFilter", getProductsWithFilter)
   /**
    * @description Get product by id
    */

@@ -1,0 +1,39 @@
+
+<div class="product-banner"></div>
+
+<div class="products-wrapper">
+  <div class="row">
+    <div class="col-sm-12 col-xl-2">
+      <div class="filters-wrapper">
+        <label for="filters" class="filters-title">FILTERS:</label>
+        <ul class="filters-list">
+          <li class="filter-item" [ngClass]="{'active': activeFilter == 1}">
+            <a (click)="searchByFilter(1)" class="cursor-pointer">All</a>
+          </li>
+          <li class="filter-item" [ngClass]="{'active': activeFilter == 2}">
+            <a (click)="searchByFilter(2)" class="cursor-pointer">Hats</a>
+          </li>
+          <li class="filter-item" [ngClass]="{'active': activeFilter == 3}">
+            <a (click)="searchByFilter(3)" class="cursor-pointer">Hoodies</a>
+          </li>
+          <li class="filter-item" [ngClass]="{'active': activeFilter == 4}">
+            <a (click)="searchByFilter(4)" class="cursor-pointer">Shirts</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-sm-12 col-xl-10 row">
+      <div *ngFor="let product of products" class="col-12 col-md-6 col-xl-4">
+        <div class="card my-2">
+          <img class="card-img-top" src="{{product.image}}" alt="Card image cap">
+          <div class="card-body">
+            <div class="d-flex justify-content-between">
+              <p>{{product.name}}</p>
+              <p>{{product.price | currency:"EUR"}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

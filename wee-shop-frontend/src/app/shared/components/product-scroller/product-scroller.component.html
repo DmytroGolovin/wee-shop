@@ -1,49 +1,21 @@
 <div class="scroller-component">
   <div class="d-flex justify-content-between">
     <h3>{{scrollerTitle}}</h3>
-    <a class="details-link cursor-pointer">Ver Tudo</a>
+    <a class="details-link cursor-pointer" routerLink="products">Ver Tudo</a>
   </div>
 
-  <div class="row">
-    <!-- <div class="col-1">
-      <div class="scroll-control-section">
-        <div class="wrapper-div">
-          <button class="btn btn-round scroller-controller" (click)="scroll(first)">
-            <i class="bi bi-chevron-left"></i>
-          </button>
-        </div>
-      </div>
-    </div> -->
-
-    <!-- <div class="col-10">
-
-    </div> -->
-
-    <div class="scrolling-wrapper py-2">
-      <div *ngFor="let product of products" class="col-12 col-md-6 col-xl-4">
-        <div class="card">
-          <img class="card-img-top" src="{{product.image}}" alt="Card image cap">
-          <div class="card-body">
-            <div class="d-flex justify-content-between">
-              <p>{{product.name}}</p>
-              <p>{{product.price | currency:"EUR"}}</p>
-            </div>
+  <div class="scrolling-wrapper py-2">
+    <div *ngFor="let product of products" class="col-12 col-md-6 col-xl-4">
+      <div class="card">
+        <img class="card-img-top" src="{{product.image}}" alt="Card image cap">
+        <div class="card-body">
+          <div class="d-flex justify-content-between">
+            <p>{{product.name}}</p>
+            <p>{{product.price | currency:"EUR"}}</p>
           </div>
         </div>
       </div>
-
     </div>
-
-    <!-- <div class="col-1 text-center">
-      <div class="scroll-control-section">
-        <div class="wrapper-div">
-          <button class="btn btn-round scroller-controller" (click)="scroll(last)">
-            <i class="bi bi-chevron-right"></i>
-          </button>
-        </div>
-      </div>
-    </div> -->
-
   </div>
 
 </div>

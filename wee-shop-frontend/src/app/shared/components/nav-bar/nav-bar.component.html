@@ -1,23 +1,12 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar-custom">
-  <button class="navbar-toggler" type="button" (click)="isMenuCollapsed = !isMenuCollapsed">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <a class="navbar-brand" [routerLink]="['/']">
-      <img src="assets/images/wee-shop-logo.png" width="30" height="30" class="d-inline-block align-top" alt="img">
-      Wee Shop
-  </a>
-
-  <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse">
-    <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-      <li class="nav-item">
-        <a class="nav-link cursor-pointer" [routerLink]="['/']">Products</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link cursor-pointer" [routerLink]="['/']">About Us</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link cursor-pointer" [routerLink]="['/']">Contact Us</a>
-      </li>
+<nav class="sticky-navbar" [ngClass]="{'black': !isOnTop}">
+  <div class="logo">
+    LOGO
+  </div>
+  <div class="menu">
+    <ul class="navbar-menu-list">
+      <li class="navbar-menu-item"><a href="">HOME</a></li>
+      <li class="navbar-menu-item"><a routerLink="products">PRODUCTS</a></li>
+      <li class="navbar-menu-item"><a href="">ABOUT</a></li>
     </ul>
   </div>
 </nav>

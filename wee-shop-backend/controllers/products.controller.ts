@@ -6,31 +6,36 @@ const products: Array<Product> = [
     id: "1",
     name: "Hundred Mil Club Hoodie",
     price: 60.49,
-    image: "https://img.represent.com/uploads/f1f7a1fe327b194e1dce29b4ce56463d.jpg?&w=750"
+    image: "https://img.represent.com/uploads/f1f7a1fe327b194e1dce29b4ce56463d.jpg?&w=750",
+    type: 3
   },
   {
     id: "2",
     name: "Hundred Mil Club T-Shirt",
     price: 36.29,
-    image: "https://img.represent.com/uploads/10d39cb0f909e2e1e4ecdde6e8e53e11.jpg?&w=750"
+    image: "https://img.represent.com/uploads/10d39cb0f909e2e1e4ecdde6e8e53e11.jpg?&w=750",
+    type: 4
   },
   {
     id: "3",
     name: "Hundred Mil Club Sweat",
     price: 48.39,
-    image: "https://img.represent.com/uploads/9867bf782a33be8713d19157e9c3f67c.jpg?&w=750"
+    image: "https://img.represent.com/uploads/9867bf782a33be8713d19157e9c3f67c.jpg?&w=750",
+    type: 3
   },
   {
     id: "4",
     name: "Waves Hoodie",
     price: 60.49,
-    image: "https://img.represent.com/uploads/242d3d7dd631b50eeea1a64625360952.jpg?&w=750"
+    image: "https://img.represent.com/uploads/242d3d7dd631b50eeea1a64625360952.jpg?&w=750",
+    type: 3
   },
   {
     id: "5",
     name: "Hundred Mil Club Hat",
     price: 36.29,
-    image: "https://img.represent.com/uploads/9532038d1edd2ec1262c68e79ce9fcbb.jpg?w=420"
+    image: "https://img.represent.com/uploads/9532038d1edd2ec1262c68e79ce9fcbb.jpg?w=420",
+    type: 2
   }
 ];
 
@@ -38,6 +43,25 @@ const getProducts = ({ response }: { response: any}) => {
   response.body = {
     success: true,
     data: products,
+  };
+};
+
+const getProductsWithFilter = ({ request, response }: { request: any, response: any}) => {
+  const filter = request.url.searchParams.get('filter');
+  console.log(filter);
+
+  var filteredProducts: Array<Product>;
+  if(filter == 1){
+    filteredProducts = products;
+  }else{
+    filteredProducts = products.filter(
+      (product: Product) => (product.type == filter),
+    );
+  }
+  
+  response.body = {
+    success: true,
+    data: filteredProducts,
   };
 };
 
@@ -155,4 +179,5 @@ export {
   getProducts,
   getProduct,
   addProduct,
+  getProductsWithFilter
 };

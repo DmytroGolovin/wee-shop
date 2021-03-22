@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-nav-bar',
@@ -8,10 +8,20 @@ import { Component, OnInit } from '@angular/core';
 export class NavBarComponent implements OnInit {
 
   public isMenuCollapsed: boolean = true;
+  public isOnTop = true;
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  @HostListener('window:scroll')
+  doSomething() {
+    if(window.pageYOffset > 0){
+      this.isOnTop = false;
+    }else{
+      this.isOnTop = true;
+    }
   }
 
 }

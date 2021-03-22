@@ -1,9 +1,23 @@
+<div class="home-banner d-flex align-items-end">
+  <div class="banner-info">
+    <p class="banner-description">
+      Street clothing for everyone
+    </p>
+    <p class="banner-title">
+      Be Original In Everything That You Wear
+    </p>
+    <div class="banner-actions">
+      <button class="button main-button mr-4" routerLink="products">
+        SHOP
+      </button>
+      <button class="button secondary-button">
+        CONTACT
+      </button>
+    </div>
+  </div>
 
-<div style="height: 100vh" class="row p-0 m-0">
-  <div class="col-7 m-0 p-0" style="background-color: teal;"></div>
-  <div class="col m-0 p-0" style="background-color:maroon;"></div>
 </div>
 
-<div class="page-wrapper my-2">
+<div class="col-12 py-4">
   <app-product-scroller [scrollerTitle]="'Destaque'" [products]="products"></app-product-scroller>
 </div>

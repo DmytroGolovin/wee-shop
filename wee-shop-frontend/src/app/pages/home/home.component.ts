@@ -17,7 +17,6 @@ export class HomeComponent implements OnInit {
   {
     this._route.data.subscribe(data => {
       this.products = data.products.data;
-      console.log(this.products);
     });
   }
 
