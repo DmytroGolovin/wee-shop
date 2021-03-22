@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ProductsResolver } from '../shared/resolvers/products.resolver';
+import { AboutComponent } from './about/about.component';
 import { HomeComponent } from './home/home.component';
 import { ProductsComponent } from './products/products.component';
 
@@ -18,6 +19,10 @@ const routes: Routes = [
     resolve: {
       products: ProductsResolver
     }
+  },
+  {
+    path: 'about',
+    component: AboutComponent,
   },
 ];
 

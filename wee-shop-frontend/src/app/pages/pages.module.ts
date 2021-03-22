@@ -6,10 +6,11 @@ import { HomeComponent } from './home/home.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SharedModule } from '../shared/shared.module';
 import { ProductsComponent } from './products/products.component';
+import { AboutComponent } from './about/about.component';
 
 
 @NgModule({
-  declarations: [HomeComponent, ProductsComponent],
+  declarations: [HomeComponent, ProductsComponent, AboutComponent],
   imports: [
     CommonModule,
     PagesRoutingModule,
