@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ProductType } from 'src/app/shared/enums/product-type.enum';
 import { Product } from 'src/app/shared/models/product.model';
+import { ProductSearchModel } from 'src/app/shared/models/products-search-model.model';
 import { ProductsService } from 'src/app/shared/services/api-consumer/products.service';
 
 @Component({
@@ -11,22 +13,39 @@ import { ProductsService } from 'src/app/shared/services/api-consumer/products.s
 export class ProductsComponent implements OnInit {
 
   public products: Array<Product> = [];
+  public totalProducts: number = 0;
+  public searchModel: ProductSearchModel = new ProductSearchModel();
 
-  public activeFilter = 1;
+  public ProductType = ProductType;
 
   constructor(private _route: ActivatedRoute,
               private _productService: ProductsService) { }
 
   ngOnInit(): void {
     this._route.data.subscribe(data => {
-      this.products = data.products.data;
+      this.products = data.products.items;
+      this.totalProducts = data.products.totalItems;
     });
   }
 
-  public searchByFilter(filter: number){
-    this.activeFilter = filter;
-    this._productService.getProductsByFilter(filter).subscribe(res => {
-      this.products = res.data;
+  public searchByFilter(type?: ProductType){
+    this.searchModel.type = type;
+    this.searchModel.pageNumber = 1;
+    this.products = [];
+    this.totalProducts = 0;
+
+    this.search();
+  }
+
+  public loadMore(){
+    this.searchModel.pageNumber++;
+    this.search();
+  }
+
+  private search(){
+    this._productService.getProductsByFilter(this.searchModel).subscribe(res => {
+      this.products = this.products.concat(res.items);
+      this.totalProducts = res.totalItems;
     });
   }
 

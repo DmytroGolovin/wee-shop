@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from "@angular/router";
 import { Observable } from "rxjs";
+import { ProductSearchModel } from "../models/products-search-model.model";
 import { ProductsService } from "../services/api-consumer/products.service";
 
 @Injectable({ providedIn: 'root' })
@@ -12,6 +13,7 @@ export class ProductsResolver implements Resolve<any> {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<any> | Promise<any> | any {
-    return this._productService.getProducts();
+    const searchModel: ProductSearchModel = new ProductSearchModel()
+    return this._productService.getProductsByFilter(searchModel);
   }
 }

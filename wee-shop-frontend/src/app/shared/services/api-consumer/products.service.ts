@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { filter } from 'rxjs/operators';
+import { PaginatedResponse } from '../../models/paginated-response.model';
 import { Product } from '../../models/product.model';
+import { ProductSearchModel } from '../../models/products-search-model.model';
 import { BaseService } from '../base.service';
 import { Constants } from '../constants';
 
@@ -17,10 +19,7 @@ export class ProductsService {
     return this._baseService.get<Array<Product>>(this.constants.api.products.root);
   }
 
-  public getProductsByFilter(filter: number): Observable<any> {
-    var request = {
-      filter: filter
-    }
-    return this._baseService.get<any>(this.constants.api.products.root + '/getByFilter', request);
+  public getProductsByFilter(searchModel: ProductSearchModel): Observable<PaginatedResponse<Product>> {
+    return this._baseService.get<PaginatedResponse<Product>>(this.constants.api.products.root + '/getByFilter', searchModel);
   }
 }

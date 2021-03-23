@@ -7,17 +7,17 @@
       <div class="filters-wrapper">
         <label for="filters" class="filters-title">FILTERS:</label>
         <ul class="filters-list">
-          <li class="filter-item" [ngClass]="{'active': activeFilter == 1}">
-            <a (click)="searchByFilter(1)" class="cursor-pointer">All</a>
+          <li class="filter-item" [ngClass]="{'active': !searchModel?.type}">
+            <a (click)="searchByFilter()" class="cursor-pointer">All</a>
           </li>
-          <li class="filter-item" [ngClass]="{'active': activeFilter == 2}">
-            <a (click)="searchByFilter(2)" class="cursor-pointer">Hats</a>
+          <li class="filter-item" [ngClass]="{'active': searchModel?.type == ProductType.Hat}">
+            <a (click)="searchByFilter(ProductType.Hat)" class="cursor-pointer">Hats</a>
           </li>
-          <li class="filter-item" [ngClass]="{'active': activeFilter == 3}">
-            <a (click)="searchByFilter(3)" class="cursor-pointer">Hoodies</a>
+          <li class="filter-item" [ngClass]="{'active': searchModel?.type == ProductType.Hoodie}">
+            <a (click)="searchByFilter(ProductType.Hoodie)" class="cursor-pointer">Hoodies</a>
           </li>
-          <li class="filter-item" [ngClass]="{'active': activeFilter == 4}">
-            <a (click)="searchByFilter(4)" class="cursor-pointer">Shirts</a>
+          <li class="filter-item" [ngClass]="{'active': searchModel?.type == ProductType.Shirt}">
+            <a (click)="searchByFilter(ProductType.Shirt)" class="cursor-pointer">Shirts</a>
           </li>
         </ul>
       </div>
@@ -35,6 +35,9 @@
             </div>
           </div>
         </div>
+      </div>
+      <div *ngIf="products.length < totalProducts" class="text-center">
+        <button class="button main-button mt-5" (click)="loadMore()">Load More...</button>
       </div>
     </div>
   </div>

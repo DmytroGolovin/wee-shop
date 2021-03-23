@@ -15,3 +15,20 @@ body {
 .cursor-pointer {
   cursor: pointer;
 }
+
+.button {
+  border: none;
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
+
+.main-button {
+  color: white;
+  background-color: #343a40;
+}
+
+.main-button:hover {
+  background-color: #5c6268;
+}

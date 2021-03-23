@@ -75,7 +75,8 @@ export class BaseService {
       // skip loop if the property is from prototype
       if (!params.hasOwnProperty(key)) continue;
 
-      httpParams = httpParams.append(key, params[key]);
+      if(params[key])
+        httpParams = httpParams.append(key, params[key]);
     }
     return httpParams;
   }
