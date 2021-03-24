@@ -16,10 +16,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void
   {
     this._route.data.subscribe(data => {
-      this.products = data.products.data;
+      this.products = data.products.items;
     });
   }
-
-
-
 }
