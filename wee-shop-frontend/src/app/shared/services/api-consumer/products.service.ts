@@ -19,7 +19,7 @@ export class ProductsService {
     return this._baseService.get<Array<Product>>(this.constants.api.products.root);
   }
 
-  public getProductsByFilter(searchModel: ProductSearchModel): Observable<PaginatedResponse<Product>> {
-    return this._baseService.get<PaginatedResponse<Product>>(this.constants.api.products.root + '/getByFilter', searchModel);
+  public getWithFilter(searchModel: ProductSearchModel): Observable<PaginatedResponse<Product>> {
+    return this._baseService.get<PaginatedResponse<Product>>(this.constants.api.products.getWithFilters, searchModel);
   }
 }

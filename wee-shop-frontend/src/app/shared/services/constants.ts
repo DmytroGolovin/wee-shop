@@ -5,7 +5,8 @@ export class Constants{
     public api = {
         home: 'api',
         products: {
-            root: 'api/products',
+            root: 'products',
+            getWithFilters: 'products/getWithFilters'
         }
     }
 }

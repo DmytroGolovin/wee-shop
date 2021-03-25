@@ -36,7 +36,7 @@
           </div>
         </div>
       </div>
-      <div *ngIf="products.length < totalProducts" class="text-center">
+      <div *ngIf="products && products.length < totalProducts" class="text-center">
         <button class="button main-button mt-5" (click)="loadMore()">Load More...</button>
       </div>
     </div>

@@ -43,7 +43,7 @@ export class ProductsComponent implements OnInit {
   }
 
   private search(){
-    this._productService.getProductsByFilter(this.searchModel).subscribe(res => {
+    this._productService.getWithFilter(this.searchModel).subscribe(res => {
       this.products = this.products.concat(res.items);
       this.totalProducts = res.totalItems;
     });

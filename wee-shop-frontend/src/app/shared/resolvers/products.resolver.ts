@@ -14,6 +14,6 @@ export class ProductsResolver implements Resolve<any> {
     state: RouterStateSnapshot
   ): Observable<any> | Promise<any> | any {
     const searchModel: ProductSearchModel = new ProductSearchModel()
-    return this._productService.getProductsByFilter(searchModel);
+    return this._productService.getWithFilter(searchModel);
   }
 }
