@@ -5,7 +5,6 @@ import { ProductType } from "../shared/enums/product-type.enum.ts";
 import { PaginatedResponse } from "../shared/models/paginated-response.model.ts";
 import { Product } from "../shared/models/product.model.ts"
 import { ProductSearchModel } from "../shared/search-models/product-search-model.model.ts";
-import { DatabaseConnection } from "../shared/database/db.ts";
 
 const products: Array<Product> = [
   {
@@ -94,8 +93,6 @@ const getProductsWithFilter = (ctx: RouterContext) => {
   const searchModel: ProductSearchModel = JSON.parse(queryString) as ProductSearchModel;
 
   var filteredProducts: Array<Product> = new Array<Product>();
-
-  console.log(DatabaseConnection);
 
   if(searchModel.type){
     filteredProducts = products.filter(
