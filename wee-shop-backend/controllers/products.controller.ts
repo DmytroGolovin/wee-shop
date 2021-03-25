@@ -5,6 +5,7 @@ import { ProductType } from "../shared/enums/product-type.enum.ts";
 import { PaginatedResponse } from "../shared/models/paginated-response.model.ts";
 import { Product } from "../shared/models/product.model.ts"
 import { ProductSearchModel } from "../shared/search-models/product-search-model.model.ts";
+import { DatabaseConnection } from "../shared/database/db.ts";
 
 const products: Array<Product> = [
   {
@@ -47,7 +48,7 @@ const products: Array<Product> = [
     name: "Waves // PewDiePie",
     price: 30.63,
     image: "https://img.represent.com/uploads/ded272656d9c99339cf08e4c6a6d9ef2.jpg?&w=750",
-    type: ProductType.Hoodie
+    type: ProductType.Shirt
   },
   {
     id: "7",
@@ -93,6 +94,8 @@ const getProductsWithFilter = (ctx: RouterContext) => {
   const searchModel: ProductSearchModel = JSON.parse(queryString) as ProductSearchModel;
 
   var filteredProducts: Array<Product> = new Array<Product>();
+
+  console.log(DatabaseConnection);
 
   if(searchModel.type){
     filteredProducts = products.filter(
