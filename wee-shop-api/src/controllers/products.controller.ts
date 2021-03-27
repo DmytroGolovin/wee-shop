@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import logging from '../config/logging';
+import db from '../shared/database/db';
 import products from '../shared/mocks/products-mocks.mock';
 import { PaginatedResponse } from '../shared/models/paginated-response.model';
 import { Product } from '../shared/models/product.model';
@@ -15,20 +16,43 @@ const sampleHealthCheck = (req: Request, res: Response) => {
     });
 };
 
-const getWithFilter = (req: Request, res: Response) => {
+const addProductsMock = (req: Request, res: Response) => {
+  logging.info(NAMESPACE, 'Inserting documents.');
+
+  products.forEach(product => {
+    const productsRef = db.ref('products');
+    productsRef.push(product).then(() => {
+      console.log('Inserted product:', product.name);
+    });
+  });
+
+  return res.status(200).json({
+      message: 'Done!'
+  });
+};
+
+
+const getWithFilter = async (req: Request, res: Response) => {
     //Gets query string, parses it and convertso to an object
     const queryString = JSON.stringify(req.query);
     const searchModel: ProductSearchModel = JSON.parse(queryString) as ProductSearchModel;
-  
+
     var filteredProducts: Array<Product> = new Array<Product>();
-  
-    if(searchModel.type){
-      filteredProducts = products.filter(
-        (product: Product) => (product.type == searchModel.type),
-      );
-    }else{
-      filteredProducts = [...products];
-    }
+
+    const productsRef = db.ref('products/');
+    await productsRef.once("value").then(data => {
+      if(!data.exists()){
+        console.log('No data!');
+      }
+
+      const value = data.val();
+      Object.keys(value).forEach(val => {
+        filteredProducts.push(value[val]);
+      });
+    })
+    .catch(err => {
+      console.log("Getting projects failed:", err.message);
+    });
   
     var response: PaginatedResponse<Product> = new PaginatedResponse<Product>();
     response.totalItems = filteredProducts.length;
@@ -41,5 +65,6 @@ const getWithFilter = (req: Request, res: Response) => {
 
 export default {
     sampleHealthCheck,
-    getWithFilter
+    getWithFilter,
+    addProductsMock
 };
