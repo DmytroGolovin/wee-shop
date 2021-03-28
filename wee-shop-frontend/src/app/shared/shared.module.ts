@@ -6,11 +6,12 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 import { ProductScrollerComponent } from './components/product-scroller/product-scroller.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { ProductDetailsComponent } from './components/product-details/product-details.component';
 
 
 
 @NgModule({
-  declarations: [NavBarComponent, LoadingSpinnerComponent, ProductScrollerComponent, FooterComponent],
+  declarations: [NavBarComponent, LoadingSpinnerComponent, ProductScrollerComponent, FooterComponent, ProductDetailsComponent],
   imports: [
     CommonModule,
     RouterModule,
