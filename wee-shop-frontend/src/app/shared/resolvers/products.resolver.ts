@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from "@angular/router";
 import { Observable } from "rxjs";
-import { ProductSearchModel } from "../models/products-search-model.model";
+import { ProductSearchModel } from "../models/product/products-search-model.model";
 import { ProductsService } from "../services/api-consumer/products.service";
 
 @Injectable({ providedIn: 'root' })

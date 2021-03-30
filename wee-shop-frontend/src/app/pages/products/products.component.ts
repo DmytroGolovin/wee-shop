@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductType } from 'src/app/shared/enums/product-type.enum';
-import { Product } from 'src/app/shared/models/product.model';
-import { ProductSearchModel } from 'src/app/shared/models/products-search-model.model';
+import { Product } from 'src/app/shared/models/product/product.model';
+import { ProductSearchModel } from 'src/app/shared/models/product/products-search-model.model';
 import { ProductsService } from 'src/app/shared/services/api-consumer/products.service';
 
 @Component({

@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { filter } from 'rxjs/operators';
 import { PaginatedResponse } from '../../models/paginated-response.model';
-import { Product } from '../../models/product.model';
-import { ProductSearchModel } from '../../models/products-search-model.model';
+import { Product } from '../../models/product/product.model';
+import { ProductSearchModel } from '../../models/product/products-search-model.model';
 import { BaseService } from '../base.service';
 import { Constants } from '../constants';
 

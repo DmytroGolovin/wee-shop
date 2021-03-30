@@ -51,14 +51,14 @@ const getWithFilter = async (req: Request, res: Response) => {
     await productsRef.once("value").then(data => {
       if(!data.exists()){
         console.log('No data!');
+        return;
       }
 
+      //Returns object with projects
       const value = data.val();
-      //console.log(value);
-      Object.keys(value).forEach(async (val) => {
+      Object.keys(value).forEach(val => {
         var retrivedProduct: Product = value[val];
         retrivedProduct.key = val;
-        retrivedProduct.models = await getProductModels(val);
         filteredProducts.push(value[val]);
       });
     })
@@ -68,13 +68,35 @@ const getWithFilter = async (req: Request, res: Response) => {
   
     var response: PaginatedResponse<Product> = new PaginatedResponse<Product>();
     response.totalItems = filteredProducts.length;
+    
     const fromPosition: number = (searchModel.pageNumber - 1) * searchModel.pageSize;
     const toPosition: number = searchModel.pageNumber * searchModel.pageSize;
-    //response.items = filteredProducts.slice(fromPosition, toPosition);
+    response.items = filteredProducts.slice(fromPosition, toPosition);
     response.items = filteredProducts;
     
     return res.status(200).json(response);
-  };
+};
+
+const getProductById = async (req: Request, res: Response) => {
+  var product: Product = new Product();
+  const productKey = req.params.productKey
+
+  const productRef = db.ref('products');
+  await productRef.child(productKey).once("value").then(async data => {
+      if(!data.exists()){
+        console.log('No data!');
+        return;
+      }
+
+      product = data.val() as Product;      
+      product.models = await getProductModels(productKey);
+    })
+    .catch(err => {
+      console.log("Getting projects failed:", err.message);
+    });
+
+  return res.status(200).json(product);
+};
 
 const getProductModels = async function(productKey: string){
   var models: Array<ProductModel> = [];
@@ -83,32 +105,11 @@ const getProductModels = async function(productKey: string){
   await productModelRef.child(productKey).once("value").then(data => {
       if(!data.exists()){
         console.log('No data!');
+        return;
       }
 
       const value = data.val();
-      //console.log(value);
-      Object.keys(value).forEach(val => {
-        models.push(value[val]);
-      });
-    })
-    .catch(err => {
-      console.log("Getting projects failed:", err.message);
-  });
 
-  return models;
-}
-
-const getProductById = async function(productKey: string){
-  var models: Array<ProductModel> = [];
-
-  const productModelRef = db.ref('productModels');
-  await productModelRef.child(productKey).once("value").then(data => {
-      if(!data.exists()){
-        console.log('No data!');
-      }
-
-      const value = data.val();
-      //console.log(value);
       Object.keys(value).forEach(val => {
         models.push(value[val]);
       });
@@ -123,5 +124,6 @@ const getProductById = async function(productKey: string){
 export default {
     sampleHealthCheck,
     getWithFilter,
-    addProductsMock
+    addProductsMock,
+    getProductById
 };

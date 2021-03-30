@@ -1,4 +1,3 @@
-import { Image } from "./image.model";
 import { ProductSize } from "./product-size";
 
 export interface ProductModel {
