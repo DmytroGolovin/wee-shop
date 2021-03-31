@@ -6,8 +6,6 @@ import { Component, HostListener, OnInit } from '@angular/core';
   styleUrls: ['./nav-bar.component.scss']
 })
 export class NavBarComponent implements OnInit {
-
-  public isMenuCollapsed: boolean = true;
   public isOnTop = true;
 
   constructor() { }

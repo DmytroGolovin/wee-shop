@@ -1,6 +1,7 @@
 
 <body>
-  <app-nav-bar></app-nav-bar>
+  <app-nav-bar *ngIf="!isSimpleMenu"></app-nav-bar>
+  <app-simple-nav-bar *ngIf="isSimpleMenu"></app-simple-nav-bar>
   <app-loading-spinner></app-loading-spinner>
   <router-outlet (activate)="onActivate($event)"></router-outlet>
   <app-footer></app-footer>

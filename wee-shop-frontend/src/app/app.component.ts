@@ -8,13 +8,12 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'sweat-shop-web';
 
-  // onActivate(event: any) {
-  //   window.scroll(0,0);
-  //   //or document.body.scrollTop = 0;
-  //   //or document.querySelector('body').scrollTo(0,0)
-  // }
+  public isSimpleMenu: boolean = false;
 
   onActivate(event: any) {
+    console.log(event.constructor.name);
+    this.isSimpleMenu = event.constructor.name == "ProductDetailsComponent";
+
     let scrollToTop = window.setInterval(() => {
         let pos = window.pageYOffset;
         if (pos > 0) {

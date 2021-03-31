@@ -1,0 +1,49 @@
+.sticky-navbar {
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+}
+
+.transparent-input {
+  background: transparent;
+  border: 1px solid #9a9da0;
+}
+
+.logo {
+  position: fixed;
+  float: left;
+  margin: 1rem 2rem;
+  color: white;
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+
+.sticky-navbar .navbar-menu-list {
+  list-style: none;
+  background-color: #343a40;
+  overflow: hidden;
+  color: white;
+  padding: 0;
+  text-align: center;
+  margin: 0;
+  transition: 0.5s;
+}
+
+.sticky-navbar .navbar-menu-list .navbar-menu-item {
+  display: inline-block;
+  padding: 1rem;
+}
+
+.sticky-navbar .navbar-menu-list .navbar-menu-item a {
+  text-decoration: none;
+  color: white;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+@media (max-width: 960px) {
+  .logo {
+    display: none;
+  }
+}

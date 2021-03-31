@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProductType } from 'src/app/shared/enums/product-type.enum';
 import { Product } from 'src/app/shared/models/product/product.model';
 import { ProductSearchModel } from 'src/app/shared/models/product/products-search-model.model';
@@ -19,6 +19,7 @@ export class ProductsComponent implements OnInit {
   public ProductType = ProductType;
 
   constructor(private _route: ActivatedRoute,
+              private _router: Router,
               private _productService: ProductsService) { }
 
   ngOnInit(): void {
@@ -47,6 +48,10 @@ export class ProductsComponent implements OnInit {
       this.products = this.products.concat(res.items);
       this.totalProducts = res.totalItems;
     });
+  }
+
+  public goToDetails(key: string) {
+    this._router.navigate(['product', key]);
   }
 
 }

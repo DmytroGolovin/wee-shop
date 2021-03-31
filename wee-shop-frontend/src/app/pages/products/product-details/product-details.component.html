@@ -1,0 +1,30 @@
+<div class="product-container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8">
+      <h4 class="product-name">{{product.name}}</h4>
+      <img [src]="product.image" [alt]="product.name">
+    </div>
+    <div class="col-sm-12 col-md-4">
+      <h4 class="product-details">{{product.price | currency:"EUR"}}</h4>
+      <h4 class="product-details">{{getTypeNameByType(product.type)}}</h4>
+      <p class="product-details">
+        Nice hoodie with high quality materials! Lets gooooo floor gank aughhh
+        skrrrr...
+      </p>
+      <div class="">
+        <div *ngFor="let productModel of product.models">
+          <p>{{productModel.color}}</p>
+          <ng-select [items]="productModel.sizes"
+          bindLabel="size"
+          bindValue="size"
+          placeholder="Size"
+          [(ngModel)]="selectedModel.size">
+         </ng-select>
+        </div>
+      </div>
+      <div class="text-center mt-5">
+        <button class="button main-button">Add To Cart</button>
+      </div>
+    </div>
+  </div>
+</div>

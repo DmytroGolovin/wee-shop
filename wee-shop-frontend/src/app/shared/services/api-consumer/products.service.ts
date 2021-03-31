@@ -21,4 +21,8 @@ export class ProductsService {
   public getWithFilter(searchModel: ProductSearchModel): Observable<PaginatedResponse<Product>> {
     return this._baseService.get<PaginatedResponse<Product>>(this.constants.api.products.getWithFilters, searchModel);
   }
+
+  public getByKey(key: string): Observable<Product> {
+    return this._baseService.get<Product>(this.constants.api.products.getByKey + key);
+  }
 }

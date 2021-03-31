@@ -6,17 +6,15 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 import { ProductScrollerComponent } from './components/product-scroller/product-scroller.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { ProductDetailsComponent } from './components/product-details/product-details.component';
-
-
+import { SimpleNavBarComponent } from './components/simple-nav-bar/simple-nav-bar.component';
 
 @NgModule({
-  declarations: [NavBarComponent, LoadingSpinnerComponent, ProductScrollerComponent, FooterComponent, ProductDetailsComponent],
+  declarations: [NavBarComponent, LoadingSpinnerComponent, ProductScrollerComponent, FooterComponent, SimpleNavBarComponent],
   imports: [
     CommonModule,
     RouterModule,
     NgbModule
   ],
-  exports: [NavBarComponent, LoadingSpinnerComponent, ProductScrollerComponent, FooterComponent]
+  exports: [NavBarComponent, LoadingSpinnerComponent, ProductScrollerComponent, FooterComponent, SimpleNavBarComponent]
 })
 export class SharedModule { }

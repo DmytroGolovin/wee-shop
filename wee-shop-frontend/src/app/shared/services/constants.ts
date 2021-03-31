@@ -6,7 +6,8 @@ export class Constants{
         home: 'api',
         products: {
             root: 'products',
-            getWithFilters: 'products/getWithFilters'
+            getWithFilters: 'products/getWithFilters',
+            getByKey: 'products/getByKey/'
         }
     }
 }

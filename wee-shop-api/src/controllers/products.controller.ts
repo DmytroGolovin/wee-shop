@@ -79,22 +79,21 @@ const getWithFilter = async (req: Request, res: Response) => {
 
 const getProductById = async (req: Request, res: Response) => {
   var product: Product = new Product();
-  const productKey = req.params.productKey
+  const productKey = req.params.productKey;
 
   const productRef = db.ref('products');
   await productRef.child(productKey).once("value").then(async data => {
-      if(!data.exists()){
-        console.log('No data!');
-        return;
-      }
-
-      product = data.val() as Product;      
-      product.models = await getProductModels(productKey);
-    })
-    .catch(err => {
-      console.log("Getting projects failed:", err.message);
-    });
-
+    if(!data.exists()){
+      console.log('No data!');
+      return res.status(200).json({});
+    }
+    
+    product = data.val() as Product;      
+    product.models = await getProductModels(productKey);
+  }).catch(err => {
+    console.log("Getting projects failed:", err.message);
+  });   
+    
   return res.status(200).json(product);
 };
 
