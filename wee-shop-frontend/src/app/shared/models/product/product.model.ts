@@ -4,6 +4,7 @@ import { ProductModel } from "./product-model.model";
 export class Product{
   key: string;
   name: string;
+  description?: string ;
   price: number;
   image: string;
   type: ProductType;

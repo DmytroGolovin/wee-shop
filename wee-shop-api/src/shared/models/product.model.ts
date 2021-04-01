@@ -5,6 +5,7 @@ export class Product {
     // id: number;
     key?: string;
     name!: string;
+    description!: string;
     price!: number;
     image!: string;
     type!: ProductType;

@@ -77,7 +77,7 @@ const getWithFilter = async (req: Request, res: Response) => {
     return res.status(200).json(response);
 };
 
-const getProductById = async (req: Request, res: Response) => {
+const getProductByKey = async (req: Request, res: Response) => {
   var product: Product = new Product();
   const productKey = req.params.productKey;
 
@@ -88,7 +88,8 @@ const getProductById = async (req: Request, res: Response) => {
       return res.status(200).json({});
     }
     
-    product = data.val() as Product;      
+    product = data.val() as Product;   
+    product.key = productKey;   
     product.models = await getProductModels(productKey);
   }).catch(err => {
     console.log("Getting projects failed:", err.message);
@@ -110,7 +111,9 @@ const getProductModels = async function(productKey: string){
       const value = data.val();
 
       Object.keys(value).forEach(val => {
-        models.push(value[val]);
+        const productModel: ProductModel = value[val];
+        productModel.key = val;
+        models.push(productModel);
       });
     })
     .catch(err => {
@@ -124,5 +127,5 @@ export default {
     sampleHealthCheck,
     getWithFilter,
     addProductsMock,
-    getProductById
+    getProductByKey
 };

@@ -1,29 +1,54 @@
-<div class="product-container">
+<div class="product-container p-5">
   <div class="row">
     <div class="col-sm-12 col-md-8">
-      <h4 class="product-name">{{product.name}}</h4>
-      <img [src]="product.image" [alt]="product.name">
+      <img class="product-image" [src]="selectedProductModel.mainImage" [alt]="product.name">
     </div>
     <div class="col-sm-12 col-md-4">
-      <h4 class="product-details">{{product.price | currency:"EUR"}}</h4>
-      <h4 class="product-details">{{getTypeNameByType(product.type)}}</h4>
+      <h4 class="product-name">{{product.name}}</h4>
+      <h4 class="product-price">{{product.price | currency:"EUR"}}</h4>
+      <h5 class="product-type">{{getTypeNameByType(product.type)}}</h5>
+
+      <hr>
+
       <p class="product-details">
-        Nice hoodie with high quality materials! Lets gooooo floor gank aughhh
-        skrrrr...
+        {{product.description}}
       </p>
-      <div class="">
-        <div *ngFor="let productModel of product.models">
-          <p>{{productModel.color}}</p>
-          <ng-select [items]="productModel.sizes"
+
+      <hr>
+
+      <div class="d-flex justify-content-between">
+        <div >
+          <p class="m-0">Color</p>
+          <span class="selected-color">{{selectedProductModel.color}}</span>
+        </div>
+        <div class="d-flex">
+          <button *ngFor="let productModel of product.models"
+                  class="color-button align-self-center m-1" [ngClass]="{'active': productModel.key == selectedProductModel.key}"
+                  (click)="productModelChange(productModel)"
+                  [style.background-color]="productModel.colorHex">
+          </button>
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="row">
+        <div class="col-xs-12 col-md-6">
+          <p>Choose Size:</p>
+        </div>
+        <div class="col-xs-12 col-md-6">
+          <ng-select [items]="selectedProductModel.sizes"
           bindLabel="size"
           bindValue="size"
           placeholder="Size"
-          [(ngModel)]="selectedModel.size">
-         </ng-select>
+          [searchable]="false"
+          [clearable]="false"
+          [(ngModel)]="orderProduct.size">
+          </ng-select>
         </div>
       </div>
       <div class="text-center mt-5">
-        <button class="button main-button">Add To Cart</button>
+        <button class="button main-button" (click)="addToCart()">Add To Cart</button>
       </div>
     </div>
   </div>

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductType } from 'src/app/shared/enums/product-type.enum';
+import { OrderProduct } from 'src/app/shared/models/order/order-product.model';
+import { ProductModel } from 'src/app/shared/models/product/product-model.model';
 import { Product } from 'src/app/shared/models/product/product.model';
 
 @Component({
@@ -13,13 +15,16 @@ export class ProductDetailsComponent implements OnInit {
   public product!: Product;
   public size: any;
 
-  public selectedModel: any = {};
+  public orderProduct!: OrderProduct;
+  public selectedProductModel!: ProductModel;
 
   constructor(private _route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this._route.data.subscribe(data => {
       this.product = data.product;
+      this.orderProduct = new OrderProduct(this.product.key, this.product.models[0].key, this.product.price);
+      this.selectedProductModel = this.product.models[0];
     });
   }
 
@@ -34,6 +39,15 @@ export class ProductDetailsComponent implements OnInit {
       default:
         return "Outro";
     }
+  }
+
+  public addToCart(){
+    console.log(this.orderProduct);
+  }
+
+  public productModelChange(productModel: ProductModel){
+    this.orderProduct.productModelKey = productModel.key;
+    this.selectedProductModel = productModel;
   }
 
 }
