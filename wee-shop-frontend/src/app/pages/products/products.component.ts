@@ -49,9 +49,4 @@ export class ProductsComponent implements OnInit {
       this.totalProducts = res.totalItems;
     });
   }
-
-  public goToDetails(key: string) {
-    this._router.navigate(['product', key]);
-  }
-
 }

@@ -1,6 +1,3 @@
-.product-container {
-}
-
 .product-image {
   width: 100%;
 }
@@ -39,5 +36,16 @@
     // border-color: lightgrey;
     width: 2rem;
     height: 2rem;
+  }
+}
+
+.model-image-holder {
+}
+
+.model-image {
+  width: 100%;
+  border: 1px solid #888e94;
+  &.active {
+    border: 2px solid #5c6268;
   }
 }

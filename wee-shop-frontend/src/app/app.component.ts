@@ -11,7 +11,6 @@ export class AppComponent {
   public isSimpleMenu: boolean = false;
 
   onActivate(event: any) {
-    console.log(event.constructor.name);
     this.isSimpleMenu = event.constructor.name == "ProductDetailsComponent";
 
     let scrollToTop = window.setInterval(() => {

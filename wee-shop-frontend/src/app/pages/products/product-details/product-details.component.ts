@@ -18,6 +18,8 @@ export class ProductDetailsComponent implements OnInit {
   public orderProduct!: OrderProduct;
   public selectedProductModel!: ProductModel;
 
+  public selectedImage!: string;
+
   constructor(private _route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -25,6 +27,7 @@ export class ProductDetailsComponent implements OnInit {
       this.product = data.product;
       this.orderProduct = new OrderProduct(this.product.key, this.product.models[0].key, this.product.price);
       this.selectedProductModel = this.product.models[0];
+      this.selectedImage = this.product.models[0].mainImage;
     });
   }
 
@@ -48,6 +51,15 @@ export class ProductDetailsComponent implements OnInit {
   public productModelChange(productModel: ProductModel){
     this.orderProduct.productModelKey = productModel.key;
     this.selectedProductModel = productModel;
+    this.selectedImage = productModel.mainImage;
+  }
+
+  public isImageSelected(image: string){
+    return this.selectedImage == image;
+  }
+
+  public selectImage(image: string){
+    this.selectedImage = image;
   }
 
 }
