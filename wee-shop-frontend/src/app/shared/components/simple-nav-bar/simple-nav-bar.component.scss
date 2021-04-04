@@ -1,5 +1,7 @@
 .sticky-navbar {
   position: relative;
+  display: flex;
+  justify-content: space-between;
   width: 100%;
   z-index: 100;
 }
@@ -10,23 +12,38 @@
 }
 
 .logo {
-  position: fixed;
-  float: left;
-  margin: 1rem 2rem;
+  cursor: pointer;
+  padding: 1rem 2rem;
   color: white;
   font-weight: bold;
   font-size: 1.25rem;
 }
 
-.sticky-navbar .navbar-menu-list {
-  list-style: none;
+.cart {
+  padding: 1rem 2rem;
+  float: right;
+  color: white;
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+
+.sticky-navbar {
   background-color: #343a40;
+  transition: 0.5s;
+}
+
+.menu {
+  width: 100%;
+}
+
+.navbar-menu-list {
+  list-style: none;
+  background: rgba(0, 0, 0, 0);
   overflow: hidden;
   color: white;
   padding: 0;
   text-align: center;
   margin: 0;
-  transition: 0.5s;
 }
 
 .sticky-navbar .navbar-menu-list .navbar-menu-item {
@@ -44,6 +61,10 @@
 
 @media (max-width: 960px) {
   .logo {
+    display: none;
+  }
+
+  .cart {
     display: none;
   }
 }

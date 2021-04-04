@@ -1,0 +1,23 @@
+body {
+  margin: 0;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header {
+  background-color: #3f51b5;
+  color: #fff;
+}
+
+section.content {
+  flex: 1;
+}
+
+footer {
+  background-color: #ffc107;
+  color: #333;
+}

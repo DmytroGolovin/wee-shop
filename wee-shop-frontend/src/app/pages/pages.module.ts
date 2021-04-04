@@ -10,9 +10,10 @@ import { AboutComponent } from './about/about.component';
 import { ProductDetailsComponent } from './products/product-details/product-details.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { FormsModule } from '@angular/forms';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
-  declarations: [HomeComponent, ProductsComponent, AboutComponent, ProductDetailsComponent],
+  declarations: [HomeComponent, ProductsComponent, AboutComponent, ProductDetailsComponent, CartComponent],
   imports: [
     CommonModule,
     PagesRoutingModule,

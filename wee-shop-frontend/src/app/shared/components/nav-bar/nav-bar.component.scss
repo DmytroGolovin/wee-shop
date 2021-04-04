@@ -1,5 +1,7 @@
 .sticky-navbar {
   position: fixed;
+  display: flex;
+  justify-content: space-between;
   width: 100%;
   z-index: 100;
 }
@@ -10,27 +12,40 @@
 }
 
 .logo {
-  position: fixed;
-  float: left;
-  margin: 1rem 2rem;
+  cursor: pointer;
+  padding: 1rem 2rem;
   color: white;
   font-weight: bold;
   font-size: 1.25rem;
 }
 
-.sticky-navbar .navbar-menu-list {
+.cart {
+  padding: 1rem 2rem;
+  float: right;
+  color: white;
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+
+.sticky-navbar {
+  transition: 0.5s;
+}
+
+.navbar-menu-list {
   list-style: none;
   background: rgba(0, 0, 0, 0);
-  //background: black;
   overflow: hidden;
   color: white;
   padding: 0;
   text-align: center;
   margin: 0;
-  transition: 0.5s;
 }
 
-.sticky-navbar.black .navbar-menu-list {
+.menu {
+  width: 100%;
+}
+
+.sticky-navbar.black {
   background-color: #343a40;
 }
 
@@ -49,6 +64,10 @@
 
 @media (max-width: 960px) {
   .logo {
+    display: none;
+  }
+
+  .cart {
     display: none;
   }
 }

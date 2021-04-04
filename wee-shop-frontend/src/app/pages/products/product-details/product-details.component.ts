@@ -4,6 +4,7 @@ import { ProductType } from 'src/app/shared/enums/product-type.enum';
 import { OrderProduct } from 'src/app/shared/models/order/order-product.model';
 import { ProductModel } from 'src/app/shared/models/product/product-model.model';
 import { Product } from 'src/app/shared/models/product/product.model';
+import { CartService } from 'src/app/shared/services/utils/cart.service';
 
 @Component({
   selector: 'app-product-details',
@@ -20,12 +21,23 @@ export class ProductDetailsComponent implements OnInit {
 
   public selectedImage!: string;
 
-  constructor(private _route: ActivatedRoute) { }
+  constructor(private _route: ActivatedRoute,
+              private _cartService: CartService) { }
 
   ngOnInit(): void {
     this._route.data.subscribe(data => {
       this.product = data.product;
-      this.orderProduct = new OrderProduct(this.product.key, this.product.models[0].key, this.product.price);
+
+      this.orderProduct = new OrderProduct(
+        this.product.key,
+        this.product.name,
+        this.product.price,
+        this.product.models[0].key,
+        this.product.models[0].mainImage,
+        this.product.models[0].color);
+
+      this.orderProduct.productType = this.getTypeNameByType(this.product.type);
+
       this.selectedProductModel = this.product.models[0];
       this.selectedImage = this.product.models[0].mainImage;
     });
@@ -46,10 +58,12 @@ export class ProductDetailsComponent implements OnInit {
 
   public addToCart(){
     console.log(this.orderProduct);
+    this._cartService.addProduct(this.orderProduct);
   }
 
   public productModelChange(productModel: ProductModel){
     this.orderProduct.productModelKey = productModel.key;
+    this.orderProduct.productModelImage = productModel.mainImage;
     this.selectedProductModel = productModel;
     this.selectedImage = productModel.mainImage;
   }

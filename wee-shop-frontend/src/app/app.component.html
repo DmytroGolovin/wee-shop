@@ -1,8 +1,15 @@
+<div class="flex-container">
+  <header>
+    <app-nav-bar *ngIf="!isSimpleMenu"></app-nav-bar>
+    <app-simple-nav-bar *ngIf="isSimpleMenu"></app-simple-nav-bar>
+  </header>
 
-<body>
-  <app-nav-bar *ngIf="!isSimpleMenu"></app-nav-bar>
-  <app-simple-nav-bar *ngIf="isSimpleMenu"></app-simple-nav-bar>
-  <app-loading-spinner></app-loading-spinner>
-  <router-outlet (activate)="onActivate($event)"></router-outlet>
-  <app-footer></app-footer>
-</body>
+  <section class="content">
+    <app-loading-spinner></app-loading-spinner>
+    <router-outlet (activate)="onActivate($event)"></router-outlet>
+  </section>
+
+  <footer>
+    <app-footer></app-footer>
+  </footer>
+</div>

@@ -11,7 +11,7 @@ export class AppComponent {
   public isSimpleMenu: boolean = false;
 
   onActivate(event: any) {
-    this.isSimpleMenu = event.constructor.name == "ProductDetailsComponent";
+    this.isSimpleMenu = event.constructor.name == "ProductDetailsComponent" || event.constructor.name == "CartComponent";
 
     let scrollToTop = window.setInterval(() => {
         let pos = window.pageYOffset;

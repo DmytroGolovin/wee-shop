@@ -1,0 +1,56 @@
+<div class="cart-container p-5">
+  <div *ngIf="products && products.length > 0" class="row">
+    <div class="col-12 col-md-12 col-xl-9">
+      <div class="cart-item row" *ngFor="let product of products">
+        <div class="col-12 col-md-4 image-wrapper">
+          <img class="item-image" [src]="product.productModelImage" alt="product.productModelKey">
+        </div>
+        <div class="col-12 col-md-4 item-info-wrapper">
+          <p>{{product.productName}}</p>
+          <p>{{product.productType}}</p>
+          <p><span>{{product.price | currency: 'EUR'}}</span><span>{{' - ' +product.color}}</span><span>{{' - ' + product.size || ''}}</span></p>
+        </div>
+        <div class="col-12 col-md-2 item-quantity-wrapper text-center">
+
+          <div class="input-container">
+            <button class="quantity-button main-button" [disabled]="product.quantity == 0" (click)="removeQuantity(product)">&#8722;</button>
+            <input class="input-field" type="text" [name]="product.productModelKey" [(ngModel)]="product.quantity" disabled>
+            <button class="quantity-button main-button" (click)="addQuantity(product)">&#43;</button>
+          </div>
+
+          <a class="cursor-pointer" (click)="removeProduct(product)">Remove</a>
+
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-12 col-xl-3">
+      <div class="d-flex justify-content-between">
+        <p class="label">Subtotal</p>
+        <p class="value">{{ getOrderSubTotal() | currency:"EUR"}}</p>
+      </div>
+      <hr>
+      <div class="d-flex justify-content-between">
+        <p class="label">Shipping</p>
+        <p class="value">{{ shipping | currency:"EUR"}}</p>
+      </div>
+      <hr>
+      <div class="d-flex justify-content-between">
+        <p class="label">Total</p>
+        <p class="value">{{ getOrderTotal() | currency:"EUR"}}</p>
+      </div>
+
+      <div class="text-center mt-5">
+        <button class="button main-button" (click)="checkOut()">Check Out</button>
+      </div>
+
+    </div>
+  </div>
+
+  <div *ngIf="!products || products.length == 0" class="no-items text-center">
+    <h2>You don't have any items in your cart!</h2>
+    <div class="text-center mt-5">
+      <button class="button main-button" routerLink="/products">Go Shopping</button>
+    </div>
+  </div>
+
+</div>

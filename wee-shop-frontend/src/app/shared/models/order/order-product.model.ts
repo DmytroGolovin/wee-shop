@@ -1,15 +1,26 @@
-import { ProductModel } from "../product/product-model.model";
-import { Product } from "../product/product.model";
-
 export class OrderProduct {
+  //Product Info
   productKey: string;
-  productModelKey: string;
+  productName: string;
   price: number;
-  size?: string;
+  productType?: string;
 
-  constructor(productKey: string, productModelKey: string, price: number){
+  //Product Model Info
+  productModelKey: string;
+  productModelImage: string;
+  size?: string;
+  color: string;
+
+  //General Info
+  quantity: number = 1;
+
+  constructor(productKey: string, productName: string, price: number, productModelKey: string, productModelImage: string, color: string){
     this.productKey = productKey;
-    this.productModelKey = productModelKey;
+    this.productName = productName;
     this.price = price;
+
+    this.productModelKey = productModelKey;
+    this.productModelImage = productModelImage;
+    this.color = color;
   }
 }

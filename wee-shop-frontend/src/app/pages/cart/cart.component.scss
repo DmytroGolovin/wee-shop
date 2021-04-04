@@ -1,0 +1,30 @@
+.item-image {
+  max-width: 100%;
+}
+
+.input-group {
+  display: flex;
+}
+
+.input-container {
+  display: flex;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+/* Style the form icons */
+
+.quantity-button {
+  border: none;
+  font-size: 1.5rem;
+  //padding: 0.3rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+/* Style the input fields */
+.input-field {
+  width: 100%;
+  padding: 10px;
+  outline: none;
+}
