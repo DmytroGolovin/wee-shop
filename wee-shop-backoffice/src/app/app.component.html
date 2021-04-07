@@ -1,14 +1,14 @@
 <div class="flex-container">
-  <header>
+  <header *ngIf="!isLogin">
     <app-nav-bar></app-nav-bar>
   </header>
 
   <section class="content">
     <app-loading-spinner></app-loading-spinner>
-    <router-outlet></router-outlet>
+    <router-outlet (activate)="onActivate($event)"></router-outlet>
   </section>
 
-  <footer>
+  <footer *ngIf="!isLogin">
     <app-footer></app-footer>
   </footer>
 </div>

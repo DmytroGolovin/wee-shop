@@ -3,7 +3,7 @@
     <div class="banner"></div>
   </div>
   <div class="col-12 col-md-6">
-    <form class="p-5">
+    <form class="p-5" (ngSubmit)="login()">
       <div class="form-group">
         <label for="email">Email address</label>
         <input type="email" name="email" class="form-control" aria-describedby="emailHelp" placeholder="Enter email" [(ngModel)]="username">
@@ -12,7 +12,7 @@
         <label for="password">Password</label>
         <input type="password" name="password" class="form-control" placeholder="Password" [(ngModel)]="password">
       </div>
-      <button class="button main-button mt-4" routerLink="home">
+      <button class="button main-button mt-4">
         LOGIN
       </button>
     </form>

@@ -38,6 +38,8 @@ const routes: Routes = [
     path: 'about',
     component: AboutComponent,
   },
+  // otherwise redirect to home
+  { path: '**', redirectTo: '' }
 ];
 
 @NgModule({

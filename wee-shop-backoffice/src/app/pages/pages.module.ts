@@ -7,6 +7,7 @@ import { SharedModule } from '../shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoginComponent } from './login/login.component';
+import { AuthGuard } from '../shared/guards/auth.guard';
 
 
 @NgModule({
@@ -18,6 +19,8 @@ import { LoginComponent } from './login/login.component';
     FormsModule,
     NgbModule
   ],
-  exports: [LoginComponent]
+  providers: [
+    AuthGuard
+  ]
 })
 export class PagesModule { }
