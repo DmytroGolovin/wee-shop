@@ -3,7 +3,17 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebaseConfig: {
+    apiKey: "AIzaSyBFWfeodT2o1SnB1LUzjHyNsTvtPABGDo4",
+    authDomain: "wee-shop-a3386.firebaseapp.com",
+    databaseURL: "https://wee-shop-a3386-default-rtdb.europe-west1.firebasedatabase.app",
+    projectId: "wee-shop-a3386",
+    storageBucket: "wee-shop-a3386.appspot.com",
+    messagingSenderId: "567100340956",
+    appId: "1:567100340956:web:868fbad61708727d55d219",
+    measurementId: "G-L68NS73BQT"
+  }
 };
 
 /*

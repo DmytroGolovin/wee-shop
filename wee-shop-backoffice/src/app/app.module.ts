@@ -12,6 +12,12 @@ import { BaseService } from './shared/services/base.service';
 import { LoaderService } from './shared/services/utils/loader.service';
 import { LoaderInterceptor } from './shared/services/interceptors/loader.interceptor';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { environment } from 'src/environments/environment';
+
+//Firebase
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+
 
 const routes: Routes = [
   {
@@ -31,7 +37,10 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     FormsModule,
     SharedModule,
-    NgbModule
+    NgbModule,
+    // 3. Initialize
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAuthModule // auth
   ],
   exports: [RouterModule],
   providers: [
