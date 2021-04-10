@@ -3,7 +3,7 @@
     <app-nav-bar></app-nav-bar>
   </header>
 
-  <section class="content">
+  <section class="content" [ngClass]="{'side-bar-margin': !isLogin}">
     <app-loading-spinner></app-loading-spinner>
     <router-outlet (activate)="onActivate($event)"></router-outlet>
   </section>

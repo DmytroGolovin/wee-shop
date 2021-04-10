@@ -4,6 +4,7 @@ import { AuthGuard } from '../shared/guards/auth.guard';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { AngularFireAuthGuard, redirectUnauthorizedTo } from '@angular/fire/auth-guard'
+import { ProductsComponent } from './products/products.component';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 
@@ -13,15 +14,23 @@ const routes: Routes = [
     component: LoginComponent
   },
   {
-    path: '',
+    path: 'home',
     component: HomeComponent,
     canActivate: [AngularFireAuthGuard],
     data: {
       authGuardPipe: redirectUnauthorizedToLogin
     },
   },
+  {
+    path: 'products',
+    component: ProductsComponent,
+    canActivate: [AngularFireAuthGuard],
+    data: {
+      authGuardPipe: redirectUnauthorizedToLogin
+    },
+  },
   // otherwise redirect to home
-  { path: '**', redirectTo: '' }
+  // { path: '**', redirectTo: '' }
 ];
 
 @NgModule({

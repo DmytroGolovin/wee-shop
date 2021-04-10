@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
   public signIn (){
     this._authService.singIn(this.username, this.password).subscribe(res => {
       if(res){
-        this._router.navigate(['']);
+        this._router.navigate(['home']);
       }
     });
   }

@@ -8,10 +8,11 @@ import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from '../shared/guards/auth.guard';
+import { ProductsComponent } from './products/products.component';
 
 
 @NgModule({
-  declarations: [HomeComponent, LoginComponent],
+  declarations: [HomeComponent, LoginComponent, ProductsComponent],
   imports: [
     CommonModule,
     PagesRoutingModule,

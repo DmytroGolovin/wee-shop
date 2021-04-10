@@ -1,1 +1,31 @@
-<p>nav-bar works!</p>
+<nav class="custom-navbar">
+  <ul class="custom-navbar-nav">
+      <li class="logo">
+          <a class="custom-nav-link" [routerLink]="['/home']">
+              <span class="link-text">Wee Shop Backoffice</span>
+              <i class="bi bi-chevron-double-right"></i>
+          </a>
+      </li>
+
+      <li class="custom-nav-item">
+          <a class="custom-nav-link" [routerLink]="['/home']" routerLinkActive="active">
+            <i class="bi bi-house"></i>
+            <span class="link-text">DASHBOARD</span>
+          </a>
+      </li>
+
+      <li class="custom-nav-item">
+          <a class="custom-nav-link" [routerLink]="['/products']" routerLinkActive="active">
+            <i class="bi bi-collection"></i>
+            <span class="link-text">PRODUCTS</span>
+          </a>
+      </li>
+
+      <li class="custom-nav-item" (click) = "signOut()">
+          <a class="custom-nav-link">
+            <i class="bi bi-box-arrow-left"></i>
+            <span class="link-text">SIGN OUT</span>
+          </a>
+      </li>
+  </ul>
+</nav>
