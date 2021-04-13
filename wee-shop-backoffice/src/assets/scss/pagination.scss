@@ -1,0 +1,30 @@
+@import "variables.scss";
+
+.page-item.active .page-link {
+  color: $secondary-text-color;
+  background-color: $bg-primary;
+  border-color: $bg-primary;
+}
+
+.page-link {
+  color: $bg-secondary;
+  background-color: $secondary-text-color;
+  border-color: 1px solid $bg-secondary;
+}
+
+.page-link:hover {
+  color: $bg-primary;
+  background-color: $primary-text-color;
+  border-color: $bg-secondary;
+}
+
+.custom-select {
+  &:focus {
+    border-color: $bg-secondary;
+
+    &::-ms-value {
+      color: $secondary-text-color;
+      background-color: $bg-primary;
+    }
+  }
+}

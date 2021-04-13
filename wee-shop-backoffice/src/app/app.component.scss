@@ -12,6 +12,20 @@ section.content {
   flex: 1;
 }
 
-.side-bar-margin {
-  margin-left: 5rem;
+// .side-bar-margin {
+//   margin-left: 5rem;
+// }
+
+/* Small screens */
+@media only screen and (max-width: 600px) {
+  // .side-bar-margin {
+  //   margin-bottom: 5rem;
+  // }
+}
+
+/* Large screens */
+@media only screen and (min-width: 600px) {
+  .side-bar-margin {
+    margin-left: 5rem;
+  }
 }

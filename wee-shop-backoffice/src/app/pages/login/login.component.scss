@@ -8,6 +8,8 @@
 }
 
 .login-container {
+  display: flex;
+  align-items: stretch;
   min-height: 100vh;
   max-width: 100vw;
 }

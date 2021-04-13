@@ -52,7 +52,7 @@ export class ProductDetailsComponent implements OnInit {
       case ProductType.Shirt:
         return "Shirt";
       default:
-        return "Outro";
+        return "Other";
     }
   }
 

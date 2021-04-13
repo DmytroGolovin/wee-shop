@@ -44,3 +44,15 @@ body {
 .main-button[disabled] {
   background-color: #4b5055;
 }
+
+body::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: #5c6268;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background: #343a40;
+}

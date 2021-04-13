@@ -5,7 +5,17 @@
 @import "~bootstrap-icons/font/bootstrap-icons.css";
 @import "~@ng-select/ng-select/themes/default.theme.css";
 @import url("https://fonts.googleapis.com/css2?family=Fjalla+One&family=Teko&display=swap");
-// @import "assets/scss/animations.scss";
+@import "assets/scss/animations.scss";
+@import "assets/scss/variables.scss";
+@import "assets/scss/pagination.scss";
+
+// $primary-text-color: #b6b6b6;
+// $secondary-text-color: #ececec;
+
+// $bg-primary: #343a40;;
+// $bg-secondary: #5c6268;
+
+// $transition-speed: 600ms;
 
 html,
 body {
@@ -32,12 +42,13 @@ body {
 }
 
 .main-button {
-  color: white;
-  background-color: #343a40;
+  color: $secondary-text-color;
+  background-color: $bg-primary;
 }
 
 .main-button:hover {
-  background-color: #5c6268;
+  color: $primary-text-color;
+  background-color: $bg-secondary;
 }
 
 .main-button:disabled,
@@ -47,13 +58,18 @@ body {
 
 //scroller style
 body::-webkit-scrollbar {
-  width: 0.25rem;
+  width: 0.5rem;
 }
 
 body::-webkit-scrollbar-track {
-  background: #1e1e24;
+  background: $secondary-text-color;
 }
 
 body::-webkit-scrollbar-thumb {
-  background: #00b5c2;
+  //background: #00b5c2;
+  background: $bg-secondary;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background: $bg-primary;
 }

@@ -72,7 +72,6 @@ const getWithFilter = async (req: Request, res: Response) => {
     const fromPosition: number = (searchModel.pageNumber - 1) * searchModel.pageSize;
     const toPosition: number = searchModel.pageNumber * searchModel.pageSize;
     response.items = filteredProducts.slice(fromPosition, toPosition);
-    response.items = filteredProducts;
     
     return res.status(200).json(response);
 };

@@ -1,14 +1,16 @@
-$primary-text-color: #b6b6b6;
-$secondary-text-color: #ececec;
+// $primary-text-color: #b6b6b6;
+// $secondary-text-color: #ececec;
 
-$bg-primary: #23232e;
-$bg-secondary: #141418;
+// $bg-primary: #23232e;
+// $bg-secondary: #141418;
 
-$ic-color: #00b5c2;
-$transition-speed: 600ms;
+// $ic-color: #00b5c2;
+// $transition-speed: 600ms;
+@import "src/assets/scss/variables.scss";
 
 .custom-navbar {
   position: fixed;
+  z-index: 10;
   background-color: $bg-primary;
   transition: 200ms ease;
 }
@@ -62,7 +64,7 @@ $transition-speed: 600ms;
 .custom-nav-link i {
   min-width: 2rem;
   margin: 0 1.5rem;
-  color: $ic-color;
+  color: $secondary-text-color;
   transition: $transition-speed;
 }
 
