@@ -6,6 +6,8 @@ import { LoginComponent } from './login/login.component';
 import { AngularFireAuthGuard, redirectUnauthorizedTo } from '@angular/fire/auth-guard'
 import { ProductsComponent } from './products/products.component';
 import { ProductsResolver } from '../shared/resolvers/products.resolver';
+import { ProductDetailsComponent } from './products/product-details/product-details.component';
+import { ProductDetailsResolver } from '../shared/resolvers/product-details.resolver';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 
@@ -31,6 +33,17 @@ const routes: Routes = [
     },
     resolve: {
       products: ProductsResolver
+    }
+  },
+  {
+    path: 'product/:key',
+    component: ProductDetailsComponent,
+    canActivate: [AngularFireAuthGuard],
+    data: {
+      authGuardPipe: redirectUnauthorizedToLogin
+    },
+    resolve: {
+      product: ProductDetailsResolver
     }
   },
   // otherwise redirect to home

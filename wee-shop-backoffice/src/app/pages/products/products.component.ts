@@ -39,6 +39,10 @@ export class ProductsComponent implements OnInit {
     });
   }
 
+  public viewDetails(key: string){
+    console.log(key);
+  }
+
   public getTypeNameByType(type: ProductType){
     switch(type){
       case ProductType.Hat:

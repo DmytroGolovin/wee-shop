@@ -9,10 +9,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from '../shared/guards/auth.guard';
 import { ProductsComponent } from './products/products.component';
+import { ProductDetailsComponent } from './products/product-details/product-details.component';
 
 
 @NgModule({
-  declarations: [HomeComponent, LoginComponent, ProductsComponent],
+  declarations: [HomeComponent, LoginComponent, ProductsComponent, ProductDetailsComponent],
   imports: [
     CommonModule,
     PagesRoutingModule,

@@ -1,11 +1,28 @@
 <div class="container py-5">
-  <div class="row" *ngFor="let product of products">
-    <div class="col-12 col-md-4 image-wrapper">
-      <img class="item-image" [src]="product.image" alt="product.productModelKey">
-    </div>
-    <div class="col-12 col-md-4 item-info-wrapper">
-      <p>{{product.name}}</p>
-      <p>{{getTypeNameByType(product.type)}}</p>
+  <div class="product-holder fade-in border my-3" *ngFor="let product of products">
+    <div class="row">
+      <div class="col-12 col-md-4 image-wrapper">
+        <img class="item-image" [src]="product.image" alt="product.productModelKey">
+      </div>
+
+      <div class="col-12 col-md-8 p-5 d-flex flex-column justify-content-between">
+        <div class="info">
+          <h4 class="product-name">{{product.name}}</h4>
+          <h4 class="product-price">{{product.price | currency:"EUR"}}</h4>
+          <h5 class="product-type">{{getTypeNameByType(product.type)}}</h5>
+        </div>
+
+        <div class="other-info" *ngIf="product.description">
+          <hr>
+          <p class="product-details">
+            {{product.description}}
+          </p>
+          <hr>
+        </div>
+        <div class="text-right align-self-end">
+          <button class="button main-button" [routerLink]="['/product', product.key]">Details</button>
+        </div>
+      </div>
     </div>
   </div>
 
