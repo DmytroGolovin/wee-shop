@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductType } from 'src/app/shared/enums/product-type.enum';
+import { EnumHelper } from 'src/app/shared/helpers/enum-helper';
 import { Product } from 'src/app/shared/models/product/product.model';
 import { ProductSearchModel } from 'src/app/shared/models/product/products-search-model.model';
 import { ProductsService } from 'src/app/shared/services/api-consumer/products.service';
@@ -17,6 +18,7 @@ export class ProductsComponent implements OnInit {
   public page: number = 1;
   public pageSize: number = 10;
   public searchModel: ProductSearchModel = new ProductSearchModel();
+  public productTypeOptions: any = []
 
   constructor(private _route: ActivatedRoute,
               private _productService: ProductsService) { }
@@ -25,9 +27,9 @@ export class ProductsComponent implements OnInit {
     this._route.data.subscribe(data => {
       this.products = data.products.items;
       this.totalItems = data.products.totalItems;
-      console.log(this.products);
     });
 
+    this.productTypeOptions = EnumHelper.enumToArray(ProductType);
     this.searchModel.pageNumber = 1;
     this.searchModel.pageSize = 10;
   }
@@ -36,6 +38,7 @@ export class ProductsComponent implements OnInit {
     this._productService.getWithFilter(this.searchModel).subscribe(res => {
       this.products = res.items;
       this.totalItems = res.totalItems;
+      this.scrollToTop();
     });
   }
 
@@ -54,6 +57,17 @@ export class ProductsComponent implements OnInit {
       default:
         return "Other";
     }
+  }
+
+  private scrollToTop() {
+    let scrollToTop = window.setInterval(() => {
+        let pos = window.pageYOffset;
+        if (pos > 0) {
+            window.scrollTo(0, pos - 20); // how far to scroll on each step
+        } else {
+            window.clearInterval(scrollToTop);
+        }
+    }, 8);
   }
 
 }

@@ -10,16 +10,19 @@ import { LoginComponent } from './login/login.component';
 import { AuthGuard } from '../shared/guards/auth.guard';
 import { ProductsComponent } from './products/products.component';
 import { ProductDetailsComponent } from './products/product-details/product-details.component';
+import { OrdersComponent } from './orders/orders.component';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 
 @NgModule({
-  declarations: [HomeComponent, LoginComponent, ProductsComponent, ProductDetailsComponent],
+  declarations: [HomeComponent, LoginComponent, ProductsComponent, ProductDetailsComponent, OrdersComponent],
   imports: [
     CommonModule,
     PagesRoutingModule,
     SharedModule,
     FormsModule,
-    NgbModule
+    NgbModule,
+    NgSelectModule
   ],
   providers: [
     AuthGuard

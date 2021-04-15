@@ -1,4 +1,31 @@
 <div class="container py-5">
+  <h4 class="product-name">PRODUCTS</h4>
+  <div class="filters">
+    <form (ngSubmit)="search()" #searchForm="ngForm">
+      <div class="row">
+        <div class="col-12 col-md-6 form-group">
+          <label for="productName">NAME</label>
+          <input type="text" name="productName" class="form-control" aria-describedby="productName" placeholder="Product name" [(ngModel)]="searchModel.name">
+        </div>
+        <div class="col-12 col-md-6 form-group">
+          <label for="productType">TYPE</label>
+          <ng-select [items]="productTypeOptions"
+          name="productType"
+          bindLabel="value"
+          bindValue="id"
+          [(ngModel)]="searchModel.type">
+          </ng-select>
+        </div>
+      </div>
+
+      <div class="text-right">
+        <button class="button main-button" type="submit">
+          SEARCH
+        </button>
+      </div>
+    </form>
+  </div>
+
   <div class="product-holder fade-in border my-3" *ngFor="let product of products">
     <div class="row">
       <div class="col-12 col-md-4 image-wrapper">

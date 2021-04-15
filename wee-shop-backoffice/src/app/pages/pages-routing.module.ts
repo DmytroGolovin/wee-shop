@@ -8,6 +8,9 @@ import { ProductsComponent } from './products/products.component';
 import { ProductsResolver } from '../shared/resolvers/products.resolver';
 import { ProductDetailsComponent } from './products/product-details/product-details.component';
 import { ProductDetailsResolver } from '../shared/resolvers/product-details.resolver';
+import { OrdersComponent } from './orders/orders.component';
+import { OrdersResolver } from '../shared/resolvers/orders.resolver';
+import { OrderDetailsResolver } from '../shared/resolvers/order-details.resolver';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 
@@ -44,6 +47,28 @@ const routes: Routes = [
     },
     resolve: {
       product: ProductDetailsResolver
+    }
+  },
+  {
+    path: 'orders',
+    component: OrdersComponent,
+    canActivate: [AngularFireAuthGuard],
+    data: {
+      authGuardPipe: redirectUnauthorizedToLogin
+    },
+    resolve: {
+      orders: OrdersResolver
+    }
+  },
+  {
+    path: 'order/:key',
+    component: ProductDetailsComponent,
+    canActivate: [AngularFireAuthGuard],
+    data: {
+      authGuardPipe: redirectUnauthorizedToLogin
+    },
+    resolve: {
+      order: OrderDetailsResolver
     }
   },
   // otherwise redirect to home

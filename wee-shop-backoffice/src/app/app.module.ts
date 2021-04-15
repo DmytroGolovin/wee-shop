@@ -17,6 +17,7 @@ import { environment } from 'src/environments/environment';
 //Firebase
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 
 const routes: Routes = [
@@ -38,6 +39,7 @@ const routes: Routes = [
     FormsModule,
     SharedModule,
     NgbModule,
+    NgSelectModule,
     // 3. Initialize
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule // auth
